@@ -1,5 +1,10 @@
-import {FETCH_TOPOLOGY_BEGIN, FETCH_TOPOLOGY_SUCCESS, FETCH_TOPOLOGY_FAILURE, UPDATE_TOPOLOGY} from "../constants";
+import {FETCH_TOPOLOGY_BEGIN, FETCH_TOPOLOGY_SUCCESS, FETCH_TOPOLOGY_FAILURE, UPDATE_TOPOLOGY, FETCH_GRAPH_BEGIN, FETCH_GRAPH_FAILURE, FETCH_GRAPH_SUCCESS} from "../constants";
 import topoQuery from '../../sparql/topoQuery'
+
+
+const $rdf = require('rdflib');
+const fetcher = new $rdf.Fetcher(store);
+const store = $rdf.graph();
 
 async function getTopology(projectFolder) {
     let mainGraph = projectFolder.split("myProjects/")
@@ -45,10 +50,37 @@ export function fetchTopology(projectFolder) {
             dispatch(fetchTopologySuccess(json))
             return json
         }
-
     }
-
 }
+
+
+async function getGraph(projectFolder) {
+    let mainGraph = projectFolder.split("myProjects/")
+    mainGraph = projectFolder + mainGraph[mainGraph.length -1].slice(0, -1) + '.ttl'
+    let result = await fetcher.load(mainGraph)
+        .then(response => {
+        return response.responseText
+    })
+        .catch(err => console.log(err))
+    return result
+}
+export function fetchGraph(projectFolder) {
+    if (projectFolder !== 'new_project') {
+        return dispatch => {
+            dispatch(fetchGraphBegin());
+            return getGraph(projectFolder)
+                .then(response => {
+                    dispatch(fetchGraphSuccess(response), );
+                    return response;
+                })
+                .catch(error =>
+                    dispatch(fetchGraphFailure(error))
+                );
+        };
+    }
+}
+
+
 
 export const updateTopology = (topology) => {
     // let topoCopy = location
@@ -91,6 +123,25 @@ export const fetchTopologySuccess = topology => {
 export const fetchTopologyFailure = error => {
     return {
         type: FETCH_TOPOLOGY_FAILURE,
+        payload: {error}
+    }
+}
+
+export const fetchGraphBegin = () => {
+    return {
+        type: FETCH_GRAPH_BEGIN
+    }};
+
+export const fetchGraphSuccess = graph => {
+    return {
+        type: FETCH_GRAPH_SUCCESS,
+        payload: {graph}
+    }
+}
+
+export const fetchGraphFailure = error => {
+    return {
+        type: FETCH_GRAPH_FAILURE,
         payload: {error}
     }
 }

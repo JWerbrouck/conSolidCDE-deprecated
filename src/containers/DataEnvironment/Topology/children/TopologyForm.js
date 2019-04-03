@@ -78,7 +78,7 @@ class TopologyForm extends Component {
                         <Form.Label column sm={2}>Site Name</Form.Label>
                         <Col sm={9}>
                             <InputGroup>
-                                <Form.Control value={this.props.topology.site.shortName} name="site" placeholder="Site Name" />
+                                <Form.Control name="site" placeholder="Site Name" />
                             </InputGroup>
                         </Col>
                     </Form.Group>

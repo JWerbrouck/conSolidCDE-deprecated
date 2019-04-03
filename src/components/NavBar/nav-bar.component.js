@@ -5,7 +5,7 @@ import { withAuthorization } from '@inrupt/solid-react-components';
 
 import {connect} from "react-redux";
 import {setProject} from '../../redux/actions/setActiveProject'
-import {fetchTopology} from "../../redux/actions/fetchTopology";
+import {fetchTopology, fetchGraph} from "../../redux/actions/fetchTopology";
 
 const fileClient = require('solid-file-client');
 
@@ -33,6 +33,7 @@ class NavBar extends Component {
     setActiveProject = (key) => {
         this.props.dispatch(setProject(key))
         this.props.dispatch(fetchTopology(key))
+        this.props.dispatch(fetchGraph(key))
     }
 
     printProps = (e) => {
@@ -81,8 +82,11 @@ function mapStateToProps(state) {
     return {
         activeProject: state.activeProject.url,
         topology: state.topology.topology,
-        loading: state.topology.loading,
-        error: state.topology.error
+        topoLoading: state.topology.loading,
+        topoError: state.topology.error,
+        graph: state.graph.graph,
+        graphLoading: state.graph.loading,
+        graphError: state.graph.error
     }
 }
 //
