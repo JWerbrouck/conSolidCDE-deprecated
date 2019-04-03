@@ -1,5 +1,5 @@
-import {FETCH_TOPOLOGY_BEGIN, FETCH_TOPOLOGY_SUCCESS, FETCH_TOPOLOGY_FAILURE} from "../constants";
-import topoQuery from '../sparql/topoQuery'
+import {FETCH_TOPOLOGY_BEGIN, FETCH_TOPOLOGY_SUCCESS, FETCH_TOPOLOGY_FAILURE, UPDATE_TOPOLOGY} from "../constants";
+import topoQuery from '../../sparql/topoQuery'
 
 async function getTopology(projectFolder) {
     let mainGraph = projectFolder.split("myProjects/")
@@ -23,8 +23,8 @@ export function fetchTopology(projectFolder) {
         };
     } else {
         let json = {
-                project: '',
-                    site: '',
+                project: {shortName: '', uri: '', newUri: ''},
+                site: {shortName: '', uri: '', newUri: ''},
                 hasBuilding: [{
                 shortName: '',
                 uri: '',
@@ -50,7 +50,31 @@ export function fetchTopology(projectFolder) {
 
 }
 
+export const updateTopology = (topology) => {
+    // let topoCopy = location
+    // let newUri = topoCopy.uri.split("#")[0]
+    //
+    // let keys = e.target.name.split("_")
+    // let topoString = 'topology'
+    // keys.forEach(k => {
+    //         topoString = topoString + '["'+k+'"]'
+    //     }
+    // )
+    //
+    // console.log(eval(topoString))
+    //
+    // newUri = newUri + '#' + e.target.value
+    //
+    // topoCopy.newUri = newUri
+    // topoCopy.shortUri = e.target.value
 
+    console.log('new', topology)
+
+    return {
+        type: UPDATE_TOPOLOGY,
+        payload: {topology}
+    }
+}
 
 export const fetchTopologyBegin = () => {
     return {

@@ -4,7 +4,7 @@ import NoProject from '../NoProject'
 import ProjectTopology from './ProjectTopology'
 
 import {connect} from "react-redux";
-import {setProject} from '../../../actions'
+import {setProject} from '../../../redux/actions'
 import {bindActionCreators} from "redux";
 
 import {withAuthorization} from "@inrupt/solid-react-components";
@@ -17,15 +17,13 @@ class TopologyContainer extends Component {
         };
     }
 
-    componentDidMount() {
-        console.log('myprops:', this.props)
-    }
-
     render() {
         let layout
-        if (this.props.activeProject.length > 0) {
-            layout = <ProjectTopology/>
+        if (this.props.activeProject.length > 0 && this.props.loading === false && this.props.error === null) {
+            layout = <ProjectTopology/>;
             return layout
+        } else if (this.props.loading === true) {
+            return <p>LOADING</p>
         } else {
             layout = <NoProject/>
             return layout

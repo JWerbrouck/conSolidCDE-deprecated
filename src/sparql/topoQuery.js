@@ -57,18 +57,18 @@ function topoData(one, res) {
     let shortSpace = space.split("#")
     shortSpace = shortSpace[shortSpace.length-1]
 
-    res['project'] = {'shortUri': shortProject, 'uri': project, 'newUri': project}
-    res['site'] = {'shortUri': shortSite, 'uri': site, 'newUri': site}
+    res['project'] = {'shortName': shortProject, 'uri': project, 'newUri': project}
+    res['site'] = {'shortName': shortSite, 'uri': site, 'newUri': site}
 
     if (!addedBuildings.includes(building)) {
-        res['hasBuilding'].push({'shortUri': shortBuilding, 'uri': building, 'newUri': building, 'hasStorey':[]});
+        res['hasBuilding'].push({'shortName': shortBuilding, 'uri': building, 'newUri': building, 'hasStorey':[]});
         addedBuildings.push(building)
     }
 
     if (!addedStoreys.includes(storey)) {
         res['hasBuilding'].forEach(function (item) {
             if (item['uri'] === building) {
-                item['hasStorey'].push({'shortUri': shortStorey, 'uri': storey, 'newUri': storey, 'hasSpace':[]})
+                item['hasStorey'].push({'shortName': shortStorey, 'uri': storey, 'newUri': storey, 'hasSpace':[]})
             }
         });
         addedStoreys.push(storey)
@@ -78,7 +78,7 @@ function topoData(one, res) {
         if (item['uri'] === building) {
             item['hasStorey'].forEach(function (st) {
                 if (st['uri'] === storey) {
-                    st['hasSpace'].push({'shortUri': shortSpace, 'uri': space, 'newUri': space})
+                    st['hasSpace'].push({'shortName': shortSpace, 'uri': space, 'newUri': space})
                 }
             });
         }

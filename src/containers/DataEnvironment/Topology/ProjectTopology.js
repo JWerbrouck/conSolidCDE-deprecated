@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {bindActionCreators} from "redux";
-import {setProject} from "../../../actions";
+import {setProject} from "../../../redux/actions";
 import {connect} from "react-redux";
 import {withAuthorization} from "@inrupt/solid-react-components";
 
@@ -9,11 +9,6 @@ import TopologyForm from './children/TopologyForm'
 import TopologyGraph from './children/TopologyGraph'
 
 class ProjectTopology extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
     render() {
         return(
             <div style={divStyle}>
@@ -36,7 +31,10 @@ const divStyle = {
 
 function mapStateToProps(state) {
     return {
-        activeProject: state
+        activeProject: state.activeProject.url,
+        topology: state.topology.items,
+        loading: state.topology.loading,
+        error: state.topology.error
     }
 }
 

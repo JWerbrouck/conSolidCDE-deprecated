@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {bindActionCreators} from "redux";
-import {setProject} from "../../../../actions";
+import {updateTopology} from "../../../../redux/actions/fetchTopology";
 import {connect} from "react-redux";
 import {withAuthorization} from "@inrupt/solid-react-components";
 
@@ -9,7 +9,17 @@ import {Container, Form, Button, Col, InputGroup, Row, DropdownButton, FormContr
 class TopologyForm extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            topology: this.props.topology
+        }
+    }
 
+    componentDidMount() {
+        console.log(this.props)
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log(this.props)
     }
 
     createGraph = (e) => {
@@ -20,6 +30,33 @@ class TopologyForm extends Component {
         console.log(this.props)
     }
 
+    nameChanged = (e, path) => {
+        console.log('first state', this.props.topology)
+        let topoCopy = path
+        let newUri = topoCopy.uri.split("#")[0]
+        newUri = newUri + '#' + e.target.value
+
+        topoCopy.newUri = newUri
+        topoCopy.shortName = e.target.value
+
+        if (e.target.name === "building") {
+            this.state.activeBuilding = e.target.value
+        } else if (e.target.name === "storey") {
+            this.state.activeStorey = e.target.value
+        } else if (e.target.name === "space") {
+            this.state.activeSpace = e.target.value
+        }
+
+        this.setState({path: topoCopy}, () => {
+            this.props.dispatch(updateTopology(this.state.topology))
+        });
+    }
+
+
+    // nameChanged = (e, location) => {
+    //     this.props.dispatch(updateTopology(e, location, this.props.topology))
+    // }
+
     render() {
         return(
             <Container>
@@ -28,7 +65,12 @@ class TopologyForm extends Component {
                         <Form.Label column sm={2}>Project Name</Form.Label>
                         <Col sm={9}>
                             <InputGroup>
-                                <Form.Control name="project" placeholder="Project Name" />
+                                <Form.Control
+                                    value={this.props.topology.project.shortName}
+                                    name="project"
+                                    placeholder="Project Name"
+                                    onChange={e => this.nameChanged(e, this.props.topology.project)}
+                                />
                             </InputGroup>
                         </Col>
                     </Form.Group>
@@ -36,7 +78,7 @@ class TopologyForm extends Component {
                         <Form.Label column sm={2}>Site Name</Form.Label>
                         <Col sm={9}>
                             <InputGroup>
-                                <Form.Control name="site" placeholder="Site Name" />
+                                <Form.Control value={this.props.topology.site.shortName} name="site" placeholder="Site Name" />
                             </InputGroup>
                         </Col>
                     </Form.Group>
@@ -79,7 +121,7 @@ class TopologyForm extends Component {
                             </InputGroup>
                         </Col>
                     </Form.Group>
-                    <Button onClick={this.createGraph}variant="primary" type="submit">
+                    <Button onClick={this.createGraph} variant="primary" type="submit">
                         Create
                     </Button>
                 </Form>
@@ -90,12 +132,11 @@ class TopologyForm extends Component {
 
 function mapStateToProps(state) {
     return {
-        activeProject: state
+        activeProject: state.activeProject.url,
+        topology: state.topology.topology,
+        loading: state.topology.loading,
+        error: state.topology.error
     }
 }
 
-function mapDispatchProps(dispatch) {
-    return bindActionCreators({setProject}, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchProps)(withAuthorization(TopologyForm));
+export default connect(mapStateToProps)(withAuthorization(TopologyForm));

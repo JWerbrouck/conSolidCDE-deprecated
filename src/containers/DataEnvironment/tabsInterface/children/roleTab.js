@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Button} from "react-bootstrap";
 
 import {connect} from "react-redux";
-import {setProject} from '../../../../actions'
+import {setProject} from '../../../../redux/actions'
 import {bindActionCreators} from "redux";
 
 import {withAuthorization} from "@inrupt/solid-react-components";

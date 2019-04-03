@@ -4,8 +4,8 @@ import {Navbar, Dropdown, Button} from 'react-bootstrap'
 import { withAuthorization } from '@inrupt/solid-react-components';
 
 import {connect} from "react-redux";
-import {setProject} from '../../actions/setActiveProject'
-import {fetchTopology} from "../../actions/fetchTopology";
+import {setProject} from '../../redux/actions/setActiveProject'
+import {fetchTopology} from "../../redux/actions/fetchTopology";
 
 const fileClient = require('solid-file-client');
 
@@ -31,7 +31,6 @@ class NavBar extends Component {
     }
 
     setActiveProject = (key) => {
-        console.log(key)
         this.props.dispatch(setProject(key))
         this.props.dispatch(fetchTopology(key))
     }
@@ -81,7 +80,7 @@ class NavBar extends Component {
 function mapStateToProps(state) {
     return {
         activeProject: state.activeProject.url,
-        topology: state.topology.items,
+        topology: state.topology.topology,
         loading: state.topology.loading,
         error: state.topology.error
     }

@@ -1,7 +1,7 @@
-import {FETCH_TOPOLOGY_BEGIN, FETCH_TOPOLOGY_SUCCESS, FETCH_TOPOLOGY_FAILURE} from "../constants";
+import {FETCH_TOPOLOGY_BEGIN, FETCH_TOPOLOGY_SUCCESS, FETCH_TOPOLOGY_FAILURE, UPDATE_TOPOLOGY} from "../constants";
 
 const initialState = {
-    items: [],
+    topology: {},
     loading: false,
     error: null
 }
@@ -14,19 +14,29 @@ export default function topoReducer(state = initialState, action) {
                 loading: true,
                 error: null
             };
+
         case FETCH_TOPOLOGY_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                items: action.payload.topology
+                topology: action.payload.topology
             };
+
         case FETCH_TOPOLOGY_FAILURE:
             return {
                 ...state,
                 loading: false,
                 error: action.payload.error,
-                items: []
-            }
+                topology: {}
+            };
+
+        case UPDATE_TOPOLOGY:
+            console.log('new topology', action.payload.topology)
+            return {
+                ...state,
+                topology: action.payload.topology
+            };
+
         default:
             return state
     }
