@@ -16,17 +16,14 @@ import "./index.css";
 import "@inrupt/solid-style-guide";
 
 import {Provider} from 'react-redux'
-import {createStore, applyMiddleware} from "redux";
-import reducer from './reducers'
-
-import {AuthNavBar} from './components'
-
-const store = createStore(reducer)
+import store from './store'
 
 library.add(fas);
 library.add(faGithub);
+
 class App extends Component {
-  render() {
+
+    render() {
     return (
         <Provider store={store}>
           <Suspense fallback={<Loader />}>

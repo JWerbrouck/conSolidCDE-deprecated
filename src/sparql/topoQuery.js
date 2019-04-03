@@ -85,36 +85,12 @@ function topoData(one, res) {
     })
 }
 
-function testData(one, res) {
-    one = one.toObject()
-    console.log(one);
-    res['object'] = one
-}
-
 //query for the building topology
 export default function queryTopology(endpoint) {
-    console.log('endpoint', endpoint)
     const context = {sources: [{ type: 'file', value: endpoint }],};
     let streamstatus = { done: false }
     let topology = {}
     topology.hasBuilding = []
-    // return myEngine.query(`
-    // SELECT  ?s ?p ?o
-    // WHERE {
-    // ?s ?p ?o
-    // }
-    // `, context)
-    //     .then(function (result) {
-    //         result.bindingsStream.on('data', (maprow) => testData(maprow, topology))
-    //         result.bindingsStream.on('end', (done) => {
-    //             streamstatus["done"] = true
-    //         })
-    //     })
-    //     .then(async function () {
-    //         await waitFor(streamstatus, "done", 5000)
-    //         console.log(JSON.stringify(topology))
-    //         return topology
-    //     })
     return myEngine.query(`
     PREFIX bot: <https://w3id.org/bot#>
     PREFIX stg: <https://raw.githubusercontent.com/JWerbrouck/Thesis/master/stg.ttl#>
@@ -134,7 +110,6 @@ export default function queryTopology(endpoint) {
         })
         .then(async function () {
             await waitFor(streamstatus, "done", 5000)
-            // console.log(JSON.stringify(topology))
             return topology
         })
 }

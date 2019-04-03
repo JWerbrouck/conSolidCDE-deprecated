@@ -17,12 +17,7 @@ class TopologyForm extends Component {
 
         let project = document.getElementById('project')
         let site = document.getElementById('site')
-
-        console.log(this.props.activeProject)
-    }
-
-    addElement = (e) => {
-
+        console.log(this.props)
     }
 
     render() {

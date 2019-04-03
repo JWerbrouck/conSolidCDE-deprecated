@@ -1,6 +1,7 @@
-import {SET_PROJECT, SET_TOPOLOGY} from "../constants";
-import topoQuery from '../sparql/topoQuery'
-
+// import {SET_PROJECT, FETCH_TOPOLOGY_FAILURE, FETCH_TOPOLOGY_SUCCESS, FETCH_TOPOLOGY_BEGIN} from "../constants";
+// import topoQuery from '../sparql/topoQuery'
+//
+//
 const setActiveProject = (action) => {
     let topology
     if (action.url !== 'new_project') {
@@ -40,20 +41,19 @@ const setActiveProject = (action) => {
 
         return {
             url: action.url,
-            id: Math.random(),
-            topology: topology
+            id: Math.random()
         };
     }
 }
-
-const reducers = (state = '', action) => {
-    switch (action.type) {
-        case SET_PROJECT:
-            let actProj = setActiveProject(action)
-            return actProj
-        default:
-            return state
-    }
-}
-
-export default reducers
+//
+// const reducers = (state = '', action) => {
+//     switch (action.type) {
+//         case SET_PROJECT:
+//             let actProj = setActiveProject(action)
+//             return actProj
+//         default:
+//             return state
+//     }
+// }
+//
+// export default reducers

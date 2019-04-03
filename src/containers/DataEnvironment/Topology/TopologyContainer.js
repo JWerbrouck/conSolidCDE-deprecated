@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Button} from "react-bootstrap";
 
 import NoProject from '../NoProject'
 import ProjectTopology from './ProjectTopology'
@@ -18,13 +17,13 @@ class TopologyContainer extends Component {
         };
     }
 
-    printProps = () => {
+    componentDidMount() {
         console.log('myprops:', this.props)
     }
 
     render() {
         let layout
-        if (this.props.activeProject) {
+        if (this.props.activeProject.length > 0) {
             layout = <ProjectTopology/>
             return layout
         } else {
@@ -42,7 +41,10 @@ class TopologyContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        activeProject: state
+        activeProject: state.activeProject.url,
+        topology: state.topology.items,
+        loading: state.topology.loading,
+        error: state.topology.error
     }
 }
 

@@ -1,12 +1,11 @@
 import React, {Component} from "react";
-import { Link } from "react-router-dom";
 import { Navigation, Toolbar } from "./children";
-import {Navbar, Nav, Dropdown, NavItem, Col, InputGroup, FormControl, DropdownButton} from 'react-bootstrap'
+import {Navbar, Dropdown, Button} from 'react-bootstrap'
 import { withAuthorization } from '@inrupt/solid-react-components';
 
 import {connect} from "react-redux";
-import {setProject} from '../../actions'
-import {bindActionCreators} from "redux";
+import {setProject} from '../../actions/setActiveProject'
+import {fetchTopology} from "../../actions/fetchTopology";
 
 const fileClient = require('solid-file-client');
 
@@ -23,6 +22,7 @@ class NavBar extends Component {
 
     componentDidMount() {
         //fetch the projects in the Private/myProjects folder of my webID
+        console.log(this.props)
         const myCard = this.props.webId
         const projectFolder = myCard.replace('profile/card#me', "public/myProjects/")
         fileClient.readFolder(projectFolder).then(folder => {
@@ -32,16 +32,22 @@ class NavBar extends Component {
 
     setActiveProject = (key) => {
         console.log(key)
-        this.props.setProject(key)
+        this.props.dispatch(setProject(key))
+        this.props.dispatch(fetchTopology(key))
+    }
+
+    printProps = (e) => {
+        e.preventDefault()
+        console.log(this.props)
     }
 
     render() {
         const {navigation, toolbar} = this.props;
 
-        let DropdownTitle
+        let DropdownTitle;
         if (this.props.activeProject) {
-            if (this.props.activeProject.url !== 'new_project') {
-                let projectTitle = this.props.activeProject.url.split("/")
+            if (this.props.activeProject !== 'new_project') {
+                let projectTitle = this.props.activeProject.split("/")
                 projectTitle = projectTitle[projectTitle.length - 2]
                 DropdownTitle = projectTitle
             } else {
@@ -50,8 +56,6 @@ class NavBar extends Component {
         } else {
             DropdownTitle = 'Active Project'
         }
-
-
 
         return (
             <Navbar bg="dark" variant="dark">
@@ -67,6 +71,7 @@ class NavBar extends Component {
                         <Dropdown.Item key="new_project" eventKey="new_project" onSelect={this.setActiveProject}>New Project</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>;
+                <Button onClick={this.printProps}>printProps</Button>
                 {toolbar ? <Toolbar toolbar={toolbar}/> : ""}
             </Navbar>
         );
@@ -74,14 +79,16 @@ class NavBar extends Component {
 };
 
 function mapStateToProps(state) {
-    console.log('state', state)
     return {
-        activeProject: state
+        activeProject: state.activeProject.url,
+        topology: state.topology.items,
+        loading: state.topology.loading,
+        error: state.topology.error
     }
 }
+//
+// function mapDispatchProps(dispatch) {
+//     return bindActionCreators({setProject}, dispatch)
+// }
 
-function mapDispatchProps(dispatch) {
-    return bindActionCreators({setProject}, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchProps)(withAuthorization(NavBar));
+export default connect(mapStateToProps)(withAuthorization(NavBar));
