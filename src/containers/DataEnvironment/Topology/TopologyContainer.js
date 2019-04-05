@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import NoProject from '../NoProject'
 import ProjectTopology from './ProjectTopology'
 
+import {Spinner} from "react-bootstrap";
+
 import {connect} from "react-redux";
 import {setProject} from '../../../redux/actions'
 import {bindActionCreators} from "redux";
@@ -21,12 +23,13 @@ class TopologyContainer extends Component {
         let layout
         if (this.props.activeProject.length > 0 && this.props.loading === false && this.props.error === null) {
             layout = <ProjectTopology/>;
-            return layout
         } else if (this.props.loading === true) {
-            return <p>LOADING</p>
+            layout =
+                <Spinner animation="border" role="status">
+                    <span className="sr-only">Loading...</span>
+                </Spinner>;
         } else {
             layout = <NoProject/>
-            return layout
         }
 
         return(

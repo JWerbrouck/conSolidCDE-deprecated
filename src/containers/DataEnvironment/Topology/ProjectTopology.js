@@ -16,9 +16,9 @@ class ProjectTopology extends Component {
                     <Col>
                         <TopologyForm/>
                     </Col>
-                    <Col>
-                        <TopologyGraph/>
-                    </Col>
+                    {/*<Col>*/}
+                        {/*<TopologyGraph/>*/}
+                    {/*</Col>*/}
                 </Row>
             </div>
         )
