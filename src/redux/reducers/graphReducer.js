@@ -1,7 +1,7 @@
 import {FETCH_GRAPH_BEGIN, FETCH_GRAPH_FAILURE, FETCH_GRAPH_SUCCESS} from "../constants";
 
 const initialState = {
-    graph: '',
+    graph: {},
     loading: false,
     error: null
 }
@@ -16,7 +16,6 @@ export default function topoReducer(state = initialState, action) {
             };
 
         case FETCH_GRAPH_SUCCESS:
-            console.log('graph is', action.payload.graph)
             return {
                 ...state,
                 loading: false,
@@ -28,7 +27,7 @@ export default function topoReducer(state = initialState, action) {
                 ...state,
                 loading: false,
                 error: action.payload.error,
-                graph: ''
+                graph: {}
             };
         default:
             return state

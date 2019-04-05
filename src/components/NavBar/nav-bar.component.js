@@ -82,16 +82,8 @@ function mapStateToProps(state) {
     return {
         activeProject: state.activeProject.url,
         topology: state.topology.topology,
-        topoLoading: state.topology.loading,
-        topoError: state.topology.error,
         graph: state.graph.graph,
-        graphLoading: state.graph.loading,
-        graphError: state.graph.error
     }
 }
-//
-// function mapDispatchProps(dispatch) {
-//     return bindActionCreators({setProject}, dispatch)
-// }
 
 export default connect(mapStateToProps)(withAuthorization(NavBar));

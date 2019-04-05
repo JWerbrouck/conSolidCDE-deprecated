@@ -4,7 +4,7 @@ import {setProject} from "../../../redux/actions";
 import {connect} from "react-redux";
 import {withAuthorization} from "@inrupt/solid-react-components";
 
-import {Container, Row, Col} from "react-bootstrap";
+import {Row, Col} from "react-bootstrap";
 import TopologyForm from './children/TopologyForm'
 import TopologyGraph from './children/TopologyGraph'
 

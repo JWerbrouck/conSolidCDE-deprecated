@@ -59,11 +59,18 @@ async function getGraph(projectFolder) {
     mainGraph = projectFolder + mainGraph[mainGraph.length -1].slice(0, -1) + '.ttl'
     let result = await fetcher.load(mainGraph)
         .then(response => {
-        return response.responseText
+            try {
+                $rdf.parse(response.responseText, store, mainGraph, "text/turtle")
+            } catch (e) {
+                console.log(e)
+            }
+
+        return store
     })
         .catch(err => console.log(err))
     return result
 }
+
 export function fetchGraph(projectFolder) {
     if (projectFolder !== 'new_project') {
         return dispatch => {
@@ -79,7 +86,6 @@ export function fetchGraph(projectFolder) {
         };
     }
 }
-
 
 
 export const updateTopology = (topology) => {
@@ -126,6 +132,9 @@ export const fetchTopologyFailure = error => {
         payload: {error}
     }
 }
+
+
+
 
 export const fetchGraphBegin = () => {
     return {
