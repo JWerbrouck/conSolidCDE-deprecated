@@ -16,6 +16,7 @@ export default function topoReducer(state = initialState, action) {
             };
 
         case FETCH_TOPOLOGY_SUCCESS:
+            console.log(action.payload.topology)
             return {
                 ...state,
                 loading: false,

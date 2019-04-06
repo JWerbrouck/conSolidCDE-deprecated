@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f823be3a-a900-4c4d-b100-245cc5c3f016" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/ProjectTopology.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/ProjectTopology.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavBar/nav-bar.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar/nav-bar.component.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/TopologyContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/TopologyContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/TopologyForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/TopologyForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/fetchTopology.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/fetchTopology.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/topoReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/topoReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sparql/namespaces.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sparql/namespaces.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,22 +21,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/TopologyForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="381" lean-forward="true" selection-start-line="381" selection-end-line="381" />
+            <state relative-caret-position="357">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
-                <element signature="e#4794#5203#0" />
-                <element signature="e#5230#6383#0" />
-                <element signature="e#6416#7299#0" />
-                <element signature="e#7330#7851#0" />
-                <element signature="e#7881#8068#0" />
-                <element signature="e#8074#8101#0" />
-                <element signature="e#9321#10870#0" />
-                <element signature="e#10897#12074#0" />
-                <element signature="e#12100#12876#0" />
               </folding>
             </state>
           </provider>
@@ -42,21 +36,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sparql/namespaces.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="104" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="104" />
+            <state relative-caret-position="85">
+              <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/NavBar/nav-bar.component.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="482">
+              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#3368#7544#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/NavBar/nav-bar.component.js">
+        <entry file="file://$PROJECT_DIR$/src/redux/reducers/activeProjectReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1309">
-              <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="n#!!block;n#constructor#0;n#NavBar#0" />
-              </folding>
+            <state relative-caret-position="340">
+              <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -64,11 +67,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/redux/actions/fetchTopology.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="31" />
+            <state relative-caret-position="170">
+              <caret line="57" column="54" lean-forward="true" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
               <folding>
-                <element signature="n#!!block;n#getTopology#0" />
-                <element signature="n#!!block;n#fetchTopology#0" />
+                <element signature="e#328#374#0" />
+                <element signature="e#2773#2775#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Topology/TopologyContainer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -83,13 +98,40 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/redux/reducers/topoReducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/redux/reducers/rootReducer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/redux/actions/setActiveProject.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nav-ic</find>
-      <find>a</find>
-      <find>color</find>
       <find>span.icon</find>
       <find>icon</find>
       <find>nav-icon</find>
@@ -117,11 +159,15 @@
       <find>defaultVa</find>
       <find>mainGraphLib</find>
       <find>openZoneMo</find>
+      <find>myId</find>
+      <find>default</find>
+      <find>newProject</find>
     </findStrings>
     <replaceStrings>
       <replace>shortName</replace>
       <replace>spaceActive</replace>
       <replace>this.state.mainGraph</replace>
+      <replace>new</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -171,22 +217,22 @@
         <option value="$PROJECT_DIR$/src/reducers/topoReducer.js" />
         <option value="$PROJECT_DIR$/src/actions/fetchTopology.js" />
         <option value="$PROJECT_DIR$/src/redux/constants.js" />
-        <option value="$PROJECT_DIR$/src/redux/reducers/topoReducer.js" />
         <option value="$PROJECT_DIR$/src/redux/reducers/rootReducer.js" />
         <option value="$PROJECT_DIR$/src/redux/reducers/graphReducer.js" />
-        <option value="$PROJECT_DIR$/src/sparql/namespaces.js" />
-        <option value="$PROJECT_DIR$/src/components/NavBar/nav-bar.component.js" />
-        <option value="$PROJECT_DIR$/src/redux/actions/fetchTopology.js" />
-        <option value="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/TopologyContainer.js" />
         <option value="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/addBuildingModal.js" />
         <option value="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/ProjectTopology.js" />
+        <option value="$PROJECT_DIR$/src/redux/reducers/topoReducer.js" />
+        <option value="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/TopologyContainer.js" />
+        <option value="$PROJECT_DIR$/src/redux/actions/fetchTopology.js" />
+        <option value="$PROJECT_DIR$/src/sparql/namespaces.js" />
         <option value="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/TopologyForm.js" />
+        <option value="$PROJECT_DIR$/src/components/NavBar/nav-bar.component.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="973" />
-    <option name="width" value="954" />
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -257,6 +303,13 @@
               <item name="solid-cde" type="b2602c69:ProjectViewProjectNode" />
               <item name="solid-cde" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="redux" type="462c0819:PsiDirectoryNode" />
+              <item name="reducers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="solid-cde" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solid-cde" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sparql" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -321,12 +374,13 @@
       <workItem from="1554376957904" duration="16848000" />
       <workItem from="1554451663924" duration="18536000" />
       <workItem from="1554471518645" duration="2041000" />
-      <workItem from="1554488495825" duration="2005000" />
+      <workItem from="1554488495825" duration="2279000" />
+      <workItem from="1554541378223" duration="9294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112447000" />
+    <option name="totallyTimeSpent" value="122015000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -339,9 +393,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.06480506" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.115384616" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -355,7 +408,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50052685" side_tool="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49947312" visible="true" weight="0.31852654" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49947312" visible="true" weight="0.31852654" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -368,14 +421,15 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/redux/actions/fetchTopology.js</url>
-          <line>56</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/TopologyForm.js</url>
+          <line>491</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/TopologyForm.js</url>
-          <line>482</line>
-          <option name="timeStamp" value="7" />
+          <line>70</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -581,9 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -594,41 +645,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/actions/setActiveProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="18" lean-forward="true" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/reducers/activeProjectReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/constants.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/reducers/topoReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/reducers/rootReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -656,42 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sparql/namespaces.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="104" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/NavBar/nav-bar.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#NavBar#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/actions/fetchTopology.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="31" />
-          <folding>
-            <element signature="n#!!block;n#getTopology#0" />
-            <element signature="n#!!block;n#fetchTopology#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/reducers/graphReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Topology/ProjectTopology.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -703,38 +687,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Topology/TopologyContainer.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/addBuildingModal.js" />
+    <entry file="file://$PROJECT_DIR$/src/redux/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/actions/setActiveProject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/addBuildingModal.js">
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/rootReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/topoReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/graphReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Topology/TopologyContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/activeProjectReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sparql/namespaces.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/actions/fetchTopology.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="57" column="54" lean-forward="true" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
+          <folding>
+            <element signature="e#328#374#0" />
+            <element signature="e#2773#2775#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/TopologyForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="381" lean-forward="true" selection-start-line="381" selection-end-line="381" />
+        <state relative-caret-position="357">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#4794#5203#0" />
-            <element signature="e#5230#6383#0" />
-            <element signature="e#6416#7299#0" />
-            <element signature="e#7330#7851#0" />
-            <element signature="e#7881#8068#0" />
-            <element signature="e#8074#8101#0" />
-            <element signature="e#9321#10870#0" />
-            <element signature="e#10897#12074#0" />
-            <element signature="e#12100#12876#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/NavBar/nav-bar.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#3368#7544#0" />
           </folding>
         </state>
       </provider>

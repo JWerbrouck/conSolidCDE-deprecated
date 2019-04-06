@@ -43,9 +43,9 @@ class TopologyContainer extends Component {
 function mapStateToProps(state) {
     return {
         activeProject: state.activeProject.url,
-        topology: state.topology.items,
-        loading: state.topology.loading,
-        error: state.topology.error
+        // topology: state.topology.items,
+        loading: state.graph.loading,
+        error: state.graph.error
     }
 }
 

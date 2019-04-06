@@ -25,16 +25,22 @@ class TopologyForm extends Component {
     }
 
     componentWillMount() {
+        console.log(this.props)
         let store = this.props.graph;
+        console.log('activeProject', this.props.activeProject)
         let mainGraph = this.props.activeProject.split("myProjects/")
+        console.log('mainGraph', mainGraph)
         mainGraph = this.props.activeProject + mainGraph[mainGraph.length -1].slice(0, -1) + '.ttl'
+        console.log('mainGraph', mainGraph)
         this.setState({mainGraph: mainGraph})
         let mainGraphLib = store.sym(mainGraph)
         this.setState({mainGraphLib: mainGraphLib})
 
         try {
             let projectUri = store.match(null, STG('hasSite'), null, mainGraphLib.doc())[0].subject.value
+            console.log(projectUri)
             let project = projectUri.replace(mainGraph+'#', '')
+            console.log(project)
             this.setState({projectActive: project})
             this.setState({projectActiveInitial: project})
 
@@ -47,7 +53,7 @@ class TopologyForm extends Component {
             let buildingActive = buildingActiveUri.replace(mainGraph + '#', '')
             this.setState({buildingActive: buildingActive}, () => {
 
-                this.setState({buildingActiveInitial: project})
+                this.setState({buildingActiveInitial: buildingActive})
                 let storeyActiveUri = store.match(store.sym(buildingActiveUri), BOT('hasStorey'), null, mainGraphLib.doc())[0].object.value
                 let storeyActive = storeyActiveUri.replace(mainGraph + '#', '')
                 this.setState({storeyActive: storeyActive}, () => {
@@ -270,6 +276,8 @@ class TopologyForm extends Component {
 
         let newStorey = document.getElementById('storeyNew').value
         let newSpace = document.getElementById('spaceNew').value
+
+        console.log(INST(this.state.buildingActiveInitial), BOT('hasStorey'), INST(newStorey))
 
         if (newStorey.length > 0 && newSpace.length > 0) {
             store.add(INST(this.state.buildingActiveInitial), BOT('hasStorey'), INST(newStorey), this.state.mainGraphLib.doc());
