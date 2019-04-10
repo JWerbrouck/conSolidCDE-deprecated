@@ -24,7 +24,8 @@ class Canvas extends Component {
         return(
             <Container >
                 <hr/>
-                <h3>{this.props.document.name}</h3>
+                <h6>{this.props.document.name}</h6>
+                <hr/>
                 {/*<canvas ref="canvas" width={640} height={425} />*/}
                 <img ref="image" src={this.props.document.url} className="hidden" />
                 <hr/>

@@ -71,7 +71,7 @@ class DocumentSelector extends Component {
                     <Col sm={2}>
                         <UploadComponent addDoc={this.addDoc}/>
                     </Col>
-                    <Col sm={8}>
+                    <Col sm={10}>
                         <Select
                             value={this.state.selectedOption}
                             onChange={this.handleChange}
@@ -79,9 +79,6 @@ class DocumentSelector extends Component {
                             placeholder='Project Documents'
                             isMulti
                         />
-                    </Col>
-                    <Col sm={2}>
-                        <Button onClick={this.printSelection}>print selection</Button>
                     </Col>
                 </Row>
                 {documents}

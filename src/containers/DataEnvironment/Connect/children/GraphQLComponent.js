@@ -18,35 +18,6 @@ const cntxt = {
     "a": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
 }
 
-const values = [{
-    title: 'Node1',
-    value: 'rrgqr',
-    key: 'sergser',
-    children: [{
-        title: 'Child Node1',
-        value: 'sertv',
-        key: 'sertsergsgfd',
-    }],
-}, {
-    title: 'Node2',
-    value: 'dsfgsd',
-    key: 'qrvqcec',
-    children: [{
-        title: 'Child Node3',
-        value: 'hgjkkghj',
-        key: 'gjhkyukgu',
-    }, {
-        title: 'Child Node4',
-        value: 'gyulglyu',
-        key: 'zrgheff',
-    }, {
-        title: 'Child Node5',
-        value: 'tserhsrg',
-        key: 'tergsrhsfd',
-    }],
-}];
-
-
 const qry = `{
     hasStorey
     hasStorey {

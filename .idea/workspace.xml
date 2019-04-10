@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f823be3a-a900-4c4d-b100-245cc5c3f016" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AuthNavBar/auth-nav-bar.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AuthNavBar/auth-nav-bar.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavBar/nav-bar.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar/nav-bar.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/DataEnvironment/ProfileUploader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DataEnvironment/ProfileUploader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/ProjectTopology.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/ProjectTopology.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/TopologyContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/TopologyContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/TopologyForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/TopologyForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/TopologyGraph.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DataEnvironment/Topology/children/TopologyGraph.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/DataEnvironment/UploadComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DataEnvironment/UploadComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/DataEnvironment/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DataEnvironment/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/fetchTopology.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/fetchTopology.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/graphReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/graphReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sparql/namespaces.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sparql/namespaces.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/DocumentSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/DocumentSelector.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/GraphQLComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="122" column="50" lean-forward="true" selection-start-line="122" selection-start-column="50" selection-end-line="122" selection-end-column="50" />
+            <state relative-caret-position="550">
+              <caret line="173" column="1" lean-forward="true" selection-start-line="173" selection-start-column="1" selection-end-line="173" selection-end-column="1" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -68,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/DocumentSelector.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="190">
+              <caret line="73" column="33" lean-forward="true" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -186,9 +169,9 @@
         <option value="$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/data.json" />
         <option value="$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/dropdownTree.css" />
         <option value="$PROJECT_DIR$/node_modules/react-dropdown-tree-select/dist/react-dropdown-tree-select.js" />
-        <option value="$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/DocumentSelector.js" />
         <option value="$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/JSONtree.js" />
         <option value="$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/GraphQLComponent.js" />
+        <option value="$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/DocumentSelector.js" />
       </list>
     </option>
   </component>
@@ -358,12 +341,12 @@
       <workItem from="1554541378223" duration="9294000" />
       <workItem from="1554715036347" duration="11127000" />
       <workItem from="1554798649864" duration="7939000" />
-      <workItem from="1554899192617" duration="21100000" />
+      <workItem from="1554899192617" duration="21349000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162181000" />
+    <option name="totallyTimeSpent" value="162430000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -805,16 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/DocumentSelector.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/JSONtree.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -827,8 +800,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/GraphQLComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="122" column="50" lean-forward="true" selection-start-line="122" selection-start-column="50" selection-end-line="122" selection-end-column="50" />
+        <state relative-caret-position="550">
+          <caret line="173" column="1" lean-forward="true" selection-start-line="173" selection-start-column="1" selection-end-line="173" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/DataEnvironment/Connect/children/DocumentSelector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="73" column="33" lean-forward="true" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
