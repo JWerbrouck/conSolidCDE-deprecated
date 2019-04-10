@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { Navigation, Toolbar } from "./children";
 import {Navbar, Dropdown, Button, Modal, Form, Row, Col, InputGroup} from 'react-bootstrap'
 import { withAuthorization } from '@inrupt/solid-react-components';
-import {BOT, STG, RDF, FOAF} from "../../sparql/namespaces";
+import {BOT, STG, RDF, FOAF, CS} from "../../sparql/namespaces";
 
 import {connect} from "react-redux";
 import {setProject} from '../../redux/actions/setActiveProject'
@@ -30,7 +30,7 @@ class NavBar extends Component {
         const projectFolder = myCard.replace('profile/card#me', "public/myProjects/")
         fileClient.readFolder(projectFolder).then(folder => {
             this.setState({myProjects: folder.folders})
-        }, err => console.log(err) );
+        }, err => console.log("main projectfolder does not exist yet") );
     }
 
     setActiveProject = (key) => {
@@ -47,11 +47,11 @@ class NavBar extends Component {
     }
 
     submitModal = () => {
-        let folder = document.getElementById('folder').value
-        let newSite = document.getElementById('site').value
-        let newBuilding = document.getElementById('building').value
-        let newStorey = document.getElementById('storey').value
-        let newSpace = document.getElementById('space').value
+        let folder = document.getElementById('newFolder').value
+        let newSite = document.getElementById('newSite').value
+        let newBuilding = document.getElementById('newBuilding').value
+        let newStorey = document.getElementById('newStorey').value
+        let newSpace = document.getElementById('newSpace').value
 
         console.log(folder, newSite, newBuilding, newStorey, newSpace)
 
@@ -60,22 +60,38 @@ class NavBar extends Component {
             //check if default and project folder already exist
             const projectFolder = this.props.webId.replace('profile/card#me', "public/myProjects/"+folder)
             const newFileName = projectFolder+'/'+folder+'.ttl'
+            const rolesFile = projectFolder + '/' + 'stakeholders.ttl'
             console.log(newFileName)
             fileClient.readFolder(projectFolder).then(folder => {
                 this.setState({myProjects: folder.folders})
             }, err => {
                 console.log(err)
+
                 fileClient.createFolder(projectFolder).then(success => {
                     console.log(`Created folder ${projectFolder}.`);
                     fileClient.createFile(newFileName)
                         .then( fileCreated => {
+                            const store = $rdf.graph();
+                            const fetcher = new $rdf.Fetcher(store);
+                            const newFile = store.sym(newFileName);
+                            const doc = newFile.doc();
+                            const newRoleFile = store.sym(rolesFile);
+                            const rolesDoc = newRoleFile.doc()
+
                             const INST = $rdf.Namespace(newFileName+'#')
                             console.log(`Created file ${fileCreated}.`)
 
-                            const store = $rdf.graph();
-                            const fetcher = new $rdf.Fetcher(store);
-                            var newFile = store.sym(newFileName);
-                            const doc = newFile.doc();
+                            fileClient.createFile(rolesFile)
+                                .then( created => {
+                                    console.log('created', created)
+                                    store.add(store.sym(this.props.webId), RDF('type'), CS('manager'), rolesDoc)
+                                    var roleGraph = $rdf.serialize(rolesDoc, store, 'text/turtle')
+
+                                    fileClient.updateFile(rolesFile, roleGraph).then( success => {
+                                        console.log( `Updated ${rolesFile}.`)
+                                    }, err => console.log(err));
+
+                                })
 
                             fetcher.load(newFileName)
                                 .then(response => {
@@ -91,7 +107,6 @@ class NavBar extends Component {
                                     store.add(INST(newSpace), RDF('type'), BOT('Space'), doc);
 
                                     var graph = $rdf.serialize(doc, store, 'text/turtle');
-                                    console.log(graph)
 
                                     fileClient.updateFile(newFileName, graph).then( success => {
                                         console.log( `Updated ${newFileName}.`)
@@ -106,15 +121,6 @@ class NavBar extends Component {
                         }, err => console.log(err) )
                 }, err => console.log(err) );
             })
-
-            //add the project to the dropdown menu
-
-            //keep the basic project file as the active project graph
-
-            //set the new project as active project
-
-
-
 
 
 
@@ -135,13 +141,13 @@ class NavBar extends Component {
                 <Modal.Body>
                     <p>First, let's create the some default elements of the new project. You can add more buildings, storeys and spaces later. Please make sure all elements are unique</p>
                     <Form.Group as={Row}>
-                        <Form.Label column sm={2}>Projectfolder</Form.Label>
+                        <Form.Label column sm={2}>Project Name</Form.Label>
                         <Col sm={9}>
                             <InputGroup>
                                 <Form.Control
-                                    name="folder"
-                                    id='folder'
-                                    placeholder="Folder in your POD, where your project will live (relative to myProjects)"
+                                    name="newFolder"
+                                    id='newFolder'
+                                    placeholder="Name of the new project"
                                 />
                             </InputGroup>
                         </Col>
@@ -163,8 +169,8 @@ class NavBar extends Component {
                         <Col sm={9}>
                             <InputGroup>
                                 <Form.Control
-                                    name="site"
-                                    id='site'
+                                    name="newSite"
+                                    id='newSite'
                                     placeholder="Name of the site"
                                 />
                             </InputGroup>
@@ -175,8 +181,8 @@ class NavBar extends Component {
                         <Col sm={9}>
                             <InputGroup>
                                 <Form.Control
-                                    name="building"
-                                    id='building'
+                                    name="newBuilding"
+                                    id='newBuilding'
                                     placeholder="Name of the default building"
                                 />
                             </InputGroup>
@@ -187,8 +193,8 @@ class NavBar extends Component {
                         <Col sm={9}>
                             <InputGroup>
                                 <Form.Control
-                                    name="storey"
-                                    id='storey'
+                                    name="newStorey"
+                                    id='newStorey'
                                     placeholder="Name of the default storey"
                                 />
                             </InputGroup>
@@ -199,8 +205,8 @@ class NavBar extends Component {
                         <Col sm={9}>
                             <InputGroup>
                                 <Form.Control
-                                    name="space"
-                                    id='space'
+                                    name="newSpace"
+                                    id='newSpace'
                                     placeholder="Name of the default space"
                                 />
                             </InputGroup>
@@ -233,7 +239,7 @@ class NavBar extends Component {
 
         return (
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand>LBDmanager</Navbar.Brand>
+                <Navbar.Brand>ConSolid</Navbar.Brand>
                 {navigation ? <Navigation navigation={navigation} /> : ""}
                 <Dropdown>
                     <Dropdown.Toggle variant="outline-light">{DropdownTitle}</Dropdown.Toggle>

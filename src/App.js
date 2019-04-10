@@ -22,6 +22,9 @@ library.add(fas);
 library.add(faGithub);
 
 class App extends Component {
+    componentDidMount() {
+        document.title = "ConSolid"
+    }
 
     render() {
     return (

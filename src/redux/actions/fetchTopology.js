@@ -55,20 +55,49 @@ const store = $rdf.graph();
 //
 
 async function getGraph(projectFolder) {
-    let mainGraph = projectFolder.split("myProjects/")
-    mainGraph = projectFolder + mainGraph[mainGraph.length -1].slice(0, -1) + '.ttl'
-    let result = await fetcher.load(mainGraph)
-        .then(response => {
-            try {
-                $rdf.parse(response.responseText, store, mainGraph, "text/turtle")
-            } catch (e) {
-                console.log(e)
-            }
+    let project = projectFolder.split("myProjects/")
+    let mainGraph = projectFolder + project[project.length -1].slice(0, -1) + '.ttl'
+    let roleGraph = projectFolder + 'stakeholders.ttl'
 
-        return store
-    })
+    let topology = await fetcher.load(mainGraph)
+        .then(response => {
+            return response.responseText
+        })
         .catch(err => console.log(err))
-    return result
+    let roles = await fetcher.load(roleGraph)
+        .then(response => {
+            return response.responseText
+        })
+        .catch(err => console.log(err))
+
+    $rdf.parse(topology, store, mainGraph, "text/turtle")
+    $rdf.parse(roles, store, roleGraph, "text/turtle")
+
+
+    // let topology = await fetcher.load(mainGraph)
+    //     .then(response => {
+    //         try {
+    //             $rdf.parse(response.responseText, store, mainGraph, "text/turtle")
+    //         } catch (e) {
+    //             console.log(e)
+    //         }
+    //
+    //     return store
+    // })
+    //     .catch(err => console.log(err))
+    // let roles = await fetcher.load(roleGraph)
+    //     .then(response => {
+    //         try {
+    //             $rdf.parse(response.responseText, store, roleGraph, "text/turtle")
+    //         } catch (e) {
+    //             console.log(e)
+    //         }
+    //
+    //         return store
+    //     })
+    //     .catch(err => console.log(err))
+
+    return store
 }
 
 export function fetchGraph(projectFolder) {

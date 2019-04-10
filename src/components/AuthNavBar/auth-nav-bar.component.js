@@ -33,8 +33,8 @@ const AuthNavBar = props => {
     {
       id: "Documents",
       icon: "img/people_white.png",
-      label: "DOCUMENTS",
-      to: "/documents"
+      label: "CONNECT",
+      to: "/connect"
     }
   ];
   return (

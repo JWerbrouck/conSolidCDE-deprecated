@@ -16,6 +16,7 @@ export default function topoReducer(state = initialState, action) {
             };
 
         case FETCH_GRAPH_SUCCESS:
+            console.log(action.payload.graph)
             return {
                 ...state,
                 loading: false,

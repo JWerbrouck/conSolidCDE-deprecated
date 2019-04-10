@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import NoProject from '../NoProject'
-import ProjectTopology from './ProjectTopology'
+import ProjectRoles from './ProjectRoles'
 
 import {Spinner} from "react-bootstrap";
 
@@ -12,7 +12,7 @@ import {bindActionCreators} from "redux";
 import {withAuthorization} from "@inrupt/solid-react-components";
 
 
-class TopologyContainer extends Component {
+class RolesContainer extends Component {
     constructor(props) {
         super();
         this.state = {
@@ -22,7 +22,7 @@ class TopologyContainer extends Component {
     render() {
         let layout
         if (this.props.activeProject.length > 0 && this.props.loading === false && this.props.error === null) {
-            layout = <ProjectTopology/>;
+            layout = <ProjectRoles/>;
         } else if (this.props.loading === true) {
             layout =
                 <Spinner animation="border" role="status">
@@ -43,6 +43,7 @@ class TopologyContainer extends Component {
 function mapStateToProps(state) {
     return {
         activeProject: state.activeProject.url,
+        // topology: state.topology.items,
         loading: state.graph.loading,
         error: state.graph.error
     }
@@ -52,4 +53,4 @@ function mapDispatchProps(dispatch) {
     return bindActionCreators({setProject}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchProps)(withAuthorization(TopologyContainer));
+export default connect(mapStateToProps, mapDispatchProps)(withAuthorization(RolesContainer));

@@ -1,0 +1,28 @@
+body {
+    margin: 20px;
+}
+
+/* resultDropdown is a custom classname to increases the specificity of our styles. It can be anything.
+ * The idea is that it is easy to extend/override builtin styles with very little effort.
+ */
+.resultDropdown .dropdown-trigger {
+    border-radius: 0.25rem;
+}
+
+.resultDropdown .dropdown-trigger > span:after {
+    font-size: 12px;
+    color: #555;
+}
+
+.resultDropdown .toggle {
+    font: normal normal normal 12px/1 FontAwesome;
+    color: #555;
+}
+
+.resultDropdown .toggle.collapsed::after {
+    content: "\f067";
+}
+
+.resultDropdown .toggle.expanded::after {
+    content: "\f068";
+}

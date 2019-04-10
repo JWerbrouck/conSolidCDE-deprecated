@@ -10,7 +10,9 @@ import {
   Welcome,
   RegistrationSuccess,
   Profile,
-  Topology
+  Topology,
+  Roles,
+  Connect
 } from "./containers";
 
 const privateRoutes = [
@@ -28,12 +30,17 @@ const privateRoutes = [
     id: "topology",
     path: "/topology",
     component: Topology
-}
-  // {
-  //   id: "roles",
-  //   path: "/roles",
-  //   component: Topology
-  // }
+  },
+  {
+    id: "roles",
+    path: "/roles",
+    component: Roles
+  },
+  {
+    id: "connect",
+    path: "/connect",
+    component: Connect
+  }
 
 ];
 

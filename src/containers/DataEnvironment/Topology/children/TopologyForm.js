@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 import {withAuthorization} from "@inrupt/solid-react-components";
-import {BOT, RDF, STG} from "../../../../sparql/namespaces";
+import {BOT, CT, RDF, STG} from "../../../../sparql/namespaces";
+import UploadComponent from '../../UploadComponent'
 
 import {Container, Form, Button, Col, InputGroup, Row, Dropdown, DropdownButton, FormControl, Modal} from "react-bootstrap";
 const $rdf = require('rdflib');
+const fileClient = require('solid-file-client');
 
 class TopologyForm extends Component {
     constructor(props) {
@@ -231,9 +233,15 @@ class TopologyForm extends Component {
     //
     // }
 
-    printProps = (e) => {
+    saveChanges = (e) => {
         e.preventDefault()
-        console.log(this.state)
+        let store = this.props.graph
+        var finalGraph = $rdf.serialize(this.state.mainGraphLib.doc(), store, 'text/turtle');
+        console.log(finalGraph)
+
+        fileClient.updateFile(this.state.mainGraph, finalGraph).then( success => {
+            console.log( `Updated ${this.state.mainGraph}.`)
+        }, err => console.log(err));
     }
 
     addNewBuilding = () => {
@@ -630,7 +638,7 @@ class TopologyForm extends Component {
                 <Form>
                     <Form.Group as={Row}>
                         <Form.Label column sm={2}>Project Name</Form.Label>
-                        <Col sm={9}>
+                        <Col sm={10}>
                             <InputGroup>
                                 <Form.Control
                                     value={this.state.projectActive}
@@ -642,12 +650,13 @@ class TopologyForm extends Component {
                                     isInvalid={!this.state.projectValid}
                                     onChange={e => this.setInvalid(e)}
                                 />
+                                <InputGroup.Append><UploadComponent linkResource={this.state.projectActiveInitial}/></InputGroup.Append>
                             </InputGroup>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}>
                         <Form.Label column sm={2}>Site Name</Form.Label>
-                        <Col sm={9}>
+                        <Col sm={10}>
                             <InputGroup>
                                 <Form.Control
                                     value={this.state.siteActive}
@@ -659,12 +668,13 @@ class TopologyForm extends Component {
                                     isInvalid={!this.state.siteValid}
                                     onChange={e => this.setInvalid(e)}
                                 />
+                                <InputGroup.Append><UploadComponent linkResource={this.state.siteActiveInitial}/></InputGroup.Append>
                             </InputGroup>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}>
                         <Form.Label column sm={2}>Buildings</Form.Label>
-                        <Col sm={9}>
+                        <Col sm={10}>
                             <InputGroup>
                                 <DropdownButton as={InputGroup.Prepend} variant="dark" title=""
                                                 id="input-group-dropdown-2">
@@ -682,12 +692,13 @@ class TopologyForm extends Component {
                                 />
                                 <InputGroup.Append><Button onClick={() => {this.openZoneModal('building')}} variant="dark">Add</Button></InputGroup.Append>
                                 <InputGroup.Append><Button onClick={this.removeBuilding} variant="dark">Remove</Button></InputGroup.Append>
+                                <InputGroup.Append><UploadComponent linkResource={this.state.buildingActiveInitial}/></InputGroup.Append>
                             </InputGroup>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}>
                         <Form.Label column sm={2}>Storeys</Form.Label>
-                        <Col sm={9}>
+                        <Col sm={10}>
                             <InputGroup>
                                 <DropdownButton as={InputGroup.Prepend} variant="dark" title=""
                                                 id="input-group-dropdown-2">
@@ -705,12 +716,13 @@ class TopologyForm extends Component {
                                 />
                                 <InputGroup.Append><Button onClick={() => {this.openZoneModal('storey')}} variant="dark">Add</Button></InputGroup.Append>
                                 <InputGroup.Append><Button onClick={this.removeStorey} variant="dark">Remove</Button></InputGroup.Append>
+                                <InputGroup.Append><UploadComponent linkResource={this.state.storeyActiveInitial}/></InputGroup.Append>
                             </InputGroup>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}>
                         <Form.Label column sm={2}>Spaces</Form.Label>
-                        <Col sm={9}>
+                        <Col sm={10}>
                             <InputGroup>
                                 <DropdownButton as={InputGroup.Prepend} variant="dark" title=""
                                                 id="input-group-dropdown-2">
@@ -728,11 +740,13 @@ class TopologyForm extends Component {
                                 />
                                 <InputGroup.Append><Button onClick={() => {this.openZoneModal('space')}} variant="dark">Add</Button></InputGroup.Append>
                                 <InputGroup.Append><Button onClick={this.removeSpace} variant="dark">Remove</Button></InputGroup.Append>
+                                <InputGroup.Append><UploadComponent linkResource={this.state.spaceActiveInitial}/></InputGroup.Append>
                             </InputGroup>
                         </Col>
                     </Form.Group>
-                    <Button onClick={this.printProps} variant="primary" type="submit">
-                        Push
+                    <hr/>
+                    <Button onClick={this.saveChanges} variant="primary" type="submit">
+                        Save changes
                     </Button>
                 </Form>
                 {BuildingModal}

@@ -1,3 +1,5 @@
 import Topology from './Topology'
+import Roles from './Roles'
+import Connect from './Connect'
 
-export default Topology
+export {Topology, Roles, Connect}

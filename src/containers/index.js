@@ -3,6 +3,6 @@ import Register, { RegistrationSuccess } from "./Register";
 import PageNotFound from "./PageNotFound";
 import Welcome from "./Welcome";
 import Profile from './Profile';
-import Topology from './DataEnvironment'
+import {Topology, Roles, Connect} from './DataEnvironment'
 
-export { Login, Register, RegistrationSuccess, PageNotFound, Welcome, Profile, Topology };
+export { Login, Register, RegistrationSuccess, PageNotFound, Welcome, Profile, Topology, Roles, Connect };
