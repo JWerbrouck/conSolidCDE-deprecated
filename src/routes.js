@@ -12,7 +12,8 @@ import {
   Profile,
   Topology,
   Roles,
-  Connect
+  Connect,
+  Validate
 } from "./containers";
 
 const privateRoutes = [
@@ -40,6 +41,11 @@ const privateRoutes = [
     id: "connect",
     path: "/connect",
     component: Connect
+  },
+  {
+    id: "validate",
+    path: "/validation",
+    component: Validate
   }
 
 ];
