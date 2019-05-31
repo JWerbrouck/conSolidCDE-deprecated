@@ -11,7 +11,7 @@ class ProjectValidation extends Component {
     constructor(props) {
         super();
         this.state = {
-            shape: 'http://www.example.com/shapes/MyTest.ttl'
+            shape: 'https://jwerbrouck.solid.community/public/myProjects/SHACLshapes/geoLocationShape.ttl'
         };
     }
 
@@ -28,7 +28,7 @@ class ProjectValidation extends Component {
         this.setState({shape: e.target.value}, () => {console.log(this.state.shape)})
     }
 
-    validate = (e) => {
+    startValidation = (e) => {
         e.preventDefault()
         let stakeholders = this.fetchStakeholders();
         let totalGraph = this.fetchPartialGraphs(stakeholders)
@@ -99,8 +99,25 @@ class ProjectValidation extends Component {
         let shapeFetcher = new $rdf.Fetcher(shapeStore);
         shapeFetcher.load(shapeStore.sym(this.state.shape))
             .then(response => {
-                console.log(response.responseText)
+                this.setState({shapeGraph: response.responseText}, () => {this.validate()})
             })
+    }
+
+    validate = () => {
+        let graph = this.state.fullGraph;
+        let shape = this.state.shapeGraph;
+        console.log(graph)
+        console.log(shape)
+        let validator = new SHACLValidator();
+        validator.validate(graph, "text/turtle", shape, "text/turtle", function (e, report) {
+            console.log("Conforms? " + report.conforms());
+            if (report.conforms() === false) {
+                report.results().forEach(function(result) {
+                    console.log("Severity: " + result.severity() + " for " + result.sourceConstraintComponent());
+                    console.log("message: " + result.message())
+                });
+            }
+        });
     }
 
     render() {
@@ -115,7 +132,7 @@ class ProjectValidation extends Component {
                                     <InputGroup>
                                         <Form.Control
                                             type="url"
-                                            defaultValue="http://www.example.com/shapes/MyTest.ttl"
+                                            defaultValue="https://jwerbrouck.solid.community/public/myProjects/SHACLshapes/geoLocationShape.ttl"
                                             name="shape"
                                             id='shape'
                                             placeholder="Shape URL"
@@ -125,7 +142,7 @@ class ProjectValidation extends Component {
                                             Please provide a valid URL.
                                         </Form.Control.Feedback>
                                         <InputGroup.Append>
-                                            <Button type="submit" variant="dark" onClick={this.validate}>Validate</Button>
+                                            <Button type="submit" variant="dark" onClick={this.startValidation}>Validate</Button>
                                         </InputGroup.Append>
                                     </InputGroup>
                                 </Col>
