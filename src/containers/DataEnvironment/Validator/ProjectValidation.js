@@ -11,7 +11,8 @@ class ProjectValidation extends Component {
     constructor(props) {
         super();
         this.state = {
-            shape: 'https://jwerbrouck.solid.community/public/myProjects/SHACLshapes/geoLocationShape.ttl'
+            shape: 'https://jwerbrouck.solid.community/public/myProjects/SHACLshapes/geoLocationShape.ttl',
+            validationResults: []
         };
     }
 
@@ -106,21 +107,48 @@ class ProjectValidation extends Component {
     validate = () => {
         let graph = this.state.fullGraph;
         let shape = this.state.shapeGraph;
-        console.log(graph)
-        console.log(shape)
         let validator = new SHACLValidator();
-        validator.validate(graph, "text/turtle", shape, "text/turtle", function (e, report) {
+        this.setState({validationResults: []})
+        validator.validate(graph, "text/turtle", shape, "text/turtle", (e, report) => {
+            console.log(report)
             console.log("Conforms? " + report.conforms());
             if (report.conforms() === false) {
-                report.results().forEach(function(result) {
+                report.results().forEach((result) => {
                     console.log("Severity: " + result.severity() + " for " + result.sourceConstraintComponent());
                     console.log("message: " + result.message())
+                    this.setState({validationResults: [...this.state.validationResults, result]}, () => {console.log(this.state.validationResults)})
+                    this.setState({passedValidation: false})
                 });
+            } else {
+                this.setState({passedValidation: true})
             }
         });
     }
 
+    renderWarnings = () => {
+        this.state.validationResults.map((result) => {
+            return (
+                <div>
+                    <p key={result}>{result.message()}</p>
+                    <p className="text-danger">{result.focusNode().split("/")[result.focusNode().split("/").length - 1]} does
+                        not comply</p>
+                    <hr/>
+                </div>
+            )
+        })
+    }
+
+
     render() {
+        let messages
+        if (this.state.passedValidation === false) {
+                messages = this.renderWarnings()
+        } else if (this.state.passedValidation === true) {
+            messages = <p className="text-success">Passed all tests</p>
+        } else {
+            messages = <p>No tests performed</p>
+        }
+
         return(
             <div style={divStyle}>
                 <Row>
@@ -149,8 +177,19 @@ class ProjectValidation extends Component {
                             </Form.Group>
                         </Form>
                     </Col>
+                </Row>
+                <hr/>
+                <hr/>
+                <Row>
                     <Col>
-                        <p>Placeholder for report</p>
+                        <h6>Validation Results:</h6>
+                        <hr/>
+                        {messages}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Button justify="right" variant="dark" size="sm">Notify responsible stakeholders!</Button>
                     </Col>
                 </Row>
             </div>
@@ -159,7 +198,7 @@ class ProjectValidation extends Component {
 }
 
 const divStyle = {
-    padding: '80px'
+    padding: '100px'
 }
 
 function mapStateToProps(state) {
