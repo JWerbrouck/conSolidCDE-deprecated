@@ -106,7 +106,9 @@ class ProjectValidation extends Component {
 
     validate = () => {
         let graph = this.state.fullGraph;
+        console.log(graph)
         let shape = this.state.shapeGraph;
+        console.log(shape)
         let validator = new SHACLValidator();
         this.setState({validationResults: []})
         validator.validate(graph, "text/turtle", shape, "text/turtle", (e, report) => {
@@ -119,30 +121,29 @@ class ProjectValidation extends Component {
                     this.setState({validationResults: [...this.state.validationResults, result]}, () => {console.log(this.state.validationResults)})
                     this.setState({passedValidation: false})
                 });
-            } else {
+            } else if (report.conforms() === true) {
                 this.setState({passedValidation: true})
             }
         });
     }
 
-    renderWarnings = () => {
-        this.state.validationResults.map((result) => {
-            return (
-                <div>
-                    <p key={result}>{result.message()}</p>
-                    <p className="text-danger">{result.focusNode().split("/")[result.focusNode().split("/").length - 1]} does
-                        not comply</p>
-                    <hr/>
-                </div>
-            )
-        })
+    printState =() => {
+        console.log(this.state)
     }
-
 
     render() {
         let messages
         if (this.state.passedValidation === false) {
-                messages = this.renderWarnings()
+                messages = this.state.validationResults.map((result) => {
+                    return (
+                        <div>
+                            <p key={result}>{result.message()}</p>
+                            <p className="text-danger">{result.focusNode().split("/")[result.focusNode().split("/").length - 1]} does
+                                not comply</p>
+                            <hr/>
+                        </div>
+                    )
+                })
         } else if (this.state.passedValidation === true) {
             messages = <p className="text-success">Passed all tests</p>
         } else {
@@ -189,7 +190,7 @@ class ProjectValidation extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <Button justify="right" variant="dark" size="sm">Notify responsible stakeholders!</Button>
+                        <Button onClick={this.printState}justify="right" variant="dark" size="sm">Notify responsible stakeholders!</Button>
                     </Col>
                 </Row>
             </div>
