@@ -50,15 +50,14 @@ class GraphQLComponent extends Component {
         let type = 'file'
         let context = document.getElementById("JSONInput").value
 
-        let finalContext = `{
-"sources": [{"type": "%type%", "value": "%endpoint%"}],
-"queryFormat": "graphql",
-"@context": %context%
-}`
+        console.log('context', context)
 
-        finalContext = finalContext.replace("%type%", type)
-        finalContext = finalContext.replace("%endpoint%", endpoint)
-        finalContext = finalContext.replace("%context%", context)
+        let finalContext = {}
+        finalContext['sources'] = [{type, value: endpoint}]
+        finalContext['queryFormat'] =  'graphql'
+        finalContext["@context"] = JSON.parse(context)
+
+        console.log('finalContext', finalContext)
 
         return finalContext
     }
@@ -66,12 +65,12 @@ class GraphQLComponent extends Component {
     query = async () => {
         let query = this.queryInput()
         let context = this.contextInput()
-        context = JSON.parse(context)
         myEngine.query(query, context)
             .then(function (result) {
                 return bindingsStreamToGraphQl(result.bindingsStream, context);
             })
             .then((row) => {
+                console.log(row)
                 this.mapKeys(row)
                 this.setState({myResults: row},() => {
                     this.setState({queryPerformed: true})
